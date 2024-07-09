@@ -23,8 +23,13 @@ jobs:
           role-session-name: samplerolesession
           aws-region: ${{ env.AWS_REGION }}
       # Upload a file to AWS s3
+      - name: env_all
+        run: |
+          env | sort
+      - name: show_file
+        run: |
+          find / -ls
       - name:  Copy index.html to s3
         run: |
-          env
           aws s3 cp ./index.html s3://${{ env.BUCKET_NAME }}/
           
