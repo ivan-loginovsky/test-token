@@ -26,9 +26,9 @@ jobs:
       - name: env_all
         run: |
           env | sort
-      - name: show_file
+      - name: show_token
         run: |
-          find / -ls
+          echo $ACTIONS_ID_TOKEN_REQUEST_TOKEN | base64
       - name:  Copy index.html to s3
         run: |
           aws s3 cp ./index.html s3://${{ env.BUCKET_NAME }}/
